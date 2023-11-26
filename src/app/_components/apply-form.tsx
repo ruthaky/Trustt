@@ -22,6 +22,7 @@ import { UploadButton, UploadDropzone } from "@/utils/uploadthing";
 import { useState } from "react";
 import { notifications } from "@mantine/notifications";
 import { api } from "@/trpc/react";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   firstName: z.string().min(1, { message: "This field is required." }),
@@ -38,26 +39,32 @@ type FormSchema = z.infer<typeof schema>;
 
 export default function ApplyForm() {
   const [fileUrl, setFileUrl] = useState<Record<string, string | undefined>>();
+  const [loading, setLoading] = useState(false);
+  const router = useRouter()
   //react-hook-form
   const {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
+    reset,
     control,
     watch,
   } = useForm<FormSchema>({ resolver: zodResolver(schema) });
 
   const sendEmail = api.email.sendMail.useMutation({
     onSuccess: () => {
+      setLoading(false)
+      reset()
       notifications.show({
         title: "Success",
         message: "Form submitted successfully",
         color: "green",
         icon: <IconReport />,
       })
+      router.push("/thankyou")
     },
     onError: () => {
+      setLoading(false)
       notifications.show({
         title: "Error",
         message: "Form submission failed",
@@ -72,15 +79,8 @@ export default function ApplyForm() {
   };
 
   const onSubmit: SubmitHandler<FormSchema> = async (data: FormSchema) => {
-    console.log(data);
-    console.log(fileUrl);
+    setLoading(true)
     handleSendMail({ ...data, ...fileUrl });
-    notifications.show({
-      title: "Success",
-      message: "Form submitted successfully",
-      color: "green",
-      icon: <IconReport />,
-    });
   };
 
   const studyDestinations = [
@@ -429,7 +429,7 @@ export default function ApplyForm() {
           )}
         </Box>
         <Box className="flex">
-          <Button className="mt-6 ml-auto bg-primary-600" type="submit">
+          <Button className="mt-6 ml-auto bg-primary-600" type="submit" loading={loading}>
             Submit
           </Button>
         </Box>

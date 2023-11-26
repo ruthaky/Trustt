@@ -12,7 +12,7 @@ export const emailRouter = createTRPCRouter({
     .input(z.object({ message: z.record(z.string()) }))
     .mutation(async ({ input }) => {
         await resend.emails.send({
-          from: 'onboarding@resend.dev',
+          from: process.env.EMAIL_FROM ?? 'onboarding@resend.dev',
             to: [process.env.EMAIL_TO ?? "mubarekendriem@gmail.com"],
             subject: "New Application",
             html: render(WelcomeEmail({props: input.message})),
