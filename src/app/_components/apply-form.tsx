@@ -28,10 +28,10 @@ const schema = z.object({
   fatherName: z.string().min(1, { message: "This field is required." }),
   lastName: z.string().min(1, { message: "This field is required." }),
   phone: z.string().min(1, { message: "This field is required." }),
-  email: z.string().email({ message: "Please enter a valid email" }).optional(),
+  email: z.string().optional().default("none"),
   visaType: z.string().min(1, { message: "This field is required." }),
   country: z.string().min(1, { message: "This field is required." }),
-  study: z.string().optional(),
+  study: z.string().optional().default("none"),
 });
 
 type FormSchema = z.infer<typeof schema>;
@@ -118,18 +118,21 @@ export default function ApplyForm() {
             className="md:w-1/3"
             withAsterisk
             {...register("firstName")}
+            error={errors.firstName?.message}
           />
           <TextInput
             label="Father's Name"
             className="md:w-1/3"
             withAsterisk
             {...register("fatherName")}
+            error={errors.fatherName?.message}
           />
           <TextInput
             label="Last Name"
             className="md:w-1/3"
             withAsterisk
             {...register("lastName")}
+            error={errors.lastName?.message}
           />
         </Box>
         <Box className="flex gap-4 flex-col md:flex-row">
@@ -138,12 +141,14 @@ export default function ApplyForm() {
             className="md:w-1/2"
             type="email"
             {...register("email")}
+            error={errors.email?.message}
           />
           <TextInput
             label="Phone Number"
             className="md:w-1/2"
             withAsterisk
             {...register("phone")}
+            error={errors.phone?.message}
           />
         </Box>
         <Divider label="Visa Preference" labelPosition="center" my={20} />
@@ -375,7 +380,7 @@ export default function ApplyForm() {
                   onClientUploadComplete={(res) => {
                     setFileUrl((prevFileUrl) => ({
                       ...prevFileUrl,
-                      travel: res[0]?.serverData,
+                      education: res[0]?.serverData,
                     }));
                     notifications.show({
                       title: "Success",
