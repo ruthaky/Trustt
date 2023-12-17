@@ -8,7 +8,7 @@ import {
   Text,
   TextInput,
 } from "@mantine/core";
-import "./page.module.css";
+import "../../styles/globals.css";
 import Image from "next/image";
 import crumb from "../../../public/crumb.svg";
 import blob from "../../../public/blb.webp";
@@ -24,7 +24,7 @@ import trust from "../../../public/trusted.gif";
 import punctual from "../../../public/timeline.gif";
 import global from "../../../public/worldwide.gif";
 import personal from "../../../public/personal.gif";
-//import gradientbg from "../../../public/gradientbg.png";
+import servicebg from "../../../public/grouppic.png";
 import US from "../../../public/US.jpg";
 import canada from "../../../public/Canada.jpg";
 import sweden from "../../../public/sweden.png";
@@ -139,9 +139,6 @@ const whyContent = [
     image: personal,
   },
 ];
-const office1LatLng = { lat: 37.7749, lng: -122.4194 };
-const office2LatLng = { lat: 40.7128, lng: -74.006 };
-
 export default function Home() {
   return (
     <MantineProvider>
@@ -302,7 +299,11 @@ export default function Home() {
           </div>
         </div>
 
-        <Box className=" flex h-[500px] bg-[url('/images/grouppic.png')] bg-contain bg-center sm:h-screen">
+        <Box
+          className=" flex h-[500px] bg-contain bg-center sm:h-screen"
+          style={{ backgroundImage: `url(${servicebg.src})` }}
+          id="services"
+        >
           <Carousel
             withIndicators
             loop
@@ -322,12 +323,12 @@ export default function Home() {
               />
             }
           >
-            <Carousel.Slide className="z-50 flex w-full items-center ">
+            <Carousel.Slide className="z-50 flex w-full items-center justify-center ">
               <section className={`item`}>
                 <div
                   className={`gradient-bg flex h-full w-full items-center justify-center`}
                 >
-                  <h1 className=" text-[38px] font-bold text-white lg:text-[70px]">
+                  <h1 className="text-center text-[38px] font-bold text-white lg:text-[70px]">
                     Our Services . . .
                   </h1>
                 </div>
@@ -391,7 +392,10 @@ export default function Home() {
           </Carousel>
         </Box>
 
-        <div className="flex h-auto flex-col items-center justify-center pt-[100px] ">
+        <div
+          className="flex h-auto flex-col items-center justify-center pt-[100px] "
+          id="destinations"
+        >
           <h2 className="mb-16 text-center text-4xl font-bold text-[#394032] ">
             Our Top Destinations
           </h2>
@@ -474,39 +478,31 @@ export default function Home() {
             <ApplyForm />
           </Box>
         </Box>
-        <div className="bg-slate-200 py-12">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
-              <div className="rounded-lg bg-white p-8">
-                <h2 className="mb-4 text-2xl font-bold">Office 1</h2>
-                <p className="mb-4">123 Main Street, City, State, Country</p>
-                <div className="h-64">
-                  <LoadScript googleMapsApiKey="YOUR_API_KEY">
-                    <GoogleMap
-                      mapContainerStyle={{ height: "100%" }}
-                      center={office1LatLng}
-                      zoom={15}
-                    >
-                      <Marker position={office1LatLng} />
-                    </GoogleMap>
-                  </LoadScript>
-                </div>
-              </div>
-              <div className="rounded-lg bg-white p-8">
-                <h2 className="mb-4 text-2xl font-bold">Office 2</h2>
-                <p className="mb-4">456 Main Street, City, State, Country</p>
-                <div className="h-64">
-                  <LoadScript googleMapsApiKey="YOUR_API_KEY">
-                    <GoogleMap
-                      mapContainerStyle={{ height: "100%" }}
-                      center={office2LatLng}
-                      zoom={15}
-                    >
-                      <Marker position={office2LatLng} />
-                    </GoogleMap>
-                  </LoadScript>
-                </div>
-              </div>
+
+        <div className="mt-4 flex h-auto flex-col items-center justify-center bg-slate-200 py-10">
+          <h2 className="mb-6 text-[40px] font-bold">Visit Our Offices</h2>
+          <div className="mb-10 flex flex-wrap justify-center space-x-0 space-y-[30px] lg:space-x-[100px] lg:space-y-0 ">
+            <div className="flex flex-col">
+              <p className="mb-5 text-center font-medium ">Address 1</p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16195258.637981232!2d10.358784549166431!3d7.691674094494052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8527b70a3aeb%3A0xcd760c143c59783d!2sTrust%20educational%20and%20visa%20consultancy!5e0!3m2!1sen!2set!4v1697055779359!5m2!1sen!2set&z=305"
+                width="220"
+                height="200"
+                style={{ border: "0" }}
+                loading="lazy"
+                className="lg:h-[350px] lg:w-[400px]"
+              ></iframe>
+            </div>
+            <div className="flex flex-col">
+              <p className="mb-5 text-center font-medium ">Address 2</p>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16195258.637981232!2d10.358784549166431!3d7.691674094494052!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8527b70a3aeb%3A0xcd760c143c59783d!2sTrust%20educational%20and%20visa%20consultancy!5e0!3m2!1sen!2set!4v1697055779359!5m2!1sen!2set&z=305"
+                width="220"
+                height="200"
+                style={{ border: "0" }}
+                loading="lazy"
+                className="lg:h-[350px] lg:w-[400px]"
+              ></iframe>
             </div>
           </div>
         </div>

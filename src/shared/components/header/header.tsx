@@ -42,7 +42,7 @@ export function Header() {
   ));
 
   return (
-    <header className="fixed z-50 w-full bg-white bg-opacity-50 px-8">
+    <header className="fixed top-0 z-50 w-full bg-white bg-opacity-50 px-8">
       <Flex className="h-14 items-center justify-between px-3">
         <Flex
           className="cursor-pointer items-center gap-2"
