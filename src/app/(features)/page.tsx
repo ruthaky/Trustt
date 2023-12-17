@@ -9,6 +9,7 @@ import {
   TextInput,
 } from "@mantine/core";
 import "../../styles/globals.css";
+import { useState } from "react";
 import Image from "next/image";
 import crumb from "../../../public/crumb.svg";
 import blob from "../../../public/blb.webp";
@@ -140,6 +141,12 @@ const whyContent = [
   },
 ];
 export default function Home() {
+  const [showPopUp, setShowPopUp] = useState(false);
+
+  const togglePopUp = () => {
+    setShowPopUp(!showPopUp);
+  };
+
   return (
     <MantineProvider>
       <div>
@@ -258,16 +265,84 @@ export default function Home() {
                   international educational institutions and embark on exciting
                   journeys around the world.
                 </p>
-                <div className="mt-7 w-auto text-left">
-                  <a
-                    href="#contact"
-                    className="inline-block rounded-[5px] bg-[#37CA16] px-10 py-3 text-lg font-semibold text-white hover:bg-green-700"
+
+                <div className="relative">
+                  <button
+                    className="rounded bg-[#37CA16] px-10 py-3 font-bold text-white hover:bg-[#6052E0]"
+                    onClick={togglePopUp}
                   >
                     Read More
-                  </a>
-                </div>
+                  </button>
 
-                {/* <PopUpSection /> */}
+                  {showPopUp && (
+                    <div className="fixed top-[200px] z-[300px] hidden h-[150px] w-[80%] items-center justify-center md:flex lg:left-[180px] lg:top-0 lg:h-full ">
+                      <div className="rounded bg-white p-6 text-[15px] shadow-lg">
+                        <p>
+                          Welcome to Trust Educational and Visa Consultancy,
+                          your premier destination for comprehensive overseas
+                          educational and travel solutions. Established in 2021
+                          and based in Addis Ababa, Ethiopia, we are dedicated
+                          to empowering Ethiopian students and individuals with
+                          the opportunity to explore international educational
+                          institutions and embark on exciting journeys around
+                          the world.
+                        </p>
+                        <br />
+                        <p>
+                          Education is our passion, and we take pride in being
+                          one of the leading overseas educational and visa
+                          consultants in the region. Our team of experienced
+                          professionals is committed to providing unparalleled
+                          guidance and counseling services to students, helping
+                          them secure admissions in esteemed educational hubs
+                          worldwide. Whether you dream of studying in the United
+                          States, Canada, Poland, Italy, Turkey, Cyprus, China,
+                          or other top destinations, we are here to make your
+                          aspirations a reality.
+                        </p>
+                        <br />
+                        <p>
+                          At Trust, we understand that pursuing education abroad
+                          is not just about academics; it is a transformative
+                          experience that broadens horizons and nurtures
+                          personal growth. That is why we go beyond educational
+                          consultancy and offer a range of comprehensive travel
+                          and visa services. We cater to individuals seeking
+                          leisure travel, ensuring seamless and hassle-free
+                          journeys to captivating destinations across the globe.
+                        </p>
+                        <br />
+                        <p>
+                          Our dedicated visa consultants are well-versed in the
+                          intricacies of visa applications and procedures. We
+                          provide expert guidance, meticulous documentation
+                          support, and personalized assistance to make the visa
+                          application process smooth and efficient. Whether you
+                          are planning a vacation, exploring a new culture, or
+                          visiting loved ones, we are here to handle all your
+                          visa requirements, leaving you free to focus on
+                          creating unforgettable memories.
+                        </p>
+                        <br />
+                        <p>
+                          Join us today and unlock a world of opportunities. Let
+                          Trust be your guiding light, empowering you to achieve
+                          academic excellence, explore new horizons, and make
+                          lifelong memories. Contact us now and embark on an
+                          extraordinary adventure that will shape your future
+                          like never before.
+                        </p>
+
+                        <button
+                          className="mt-4 rounded bg-[#37CA16] px-4 py-2 font-bold text-white hover:bg-[#6052E0]"
+                          onClick={togglePopUp}
+                        >
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
