@@ -28,24 +28,29 @@ const links = [
 
 export function Header() {
   const [opened, { toggle }] = useDisclosure(false);
-  const path = usePathname()
-  const router = useRouter()
+  const path = usePathname();
+  const router = useRouter();
 
   const items = links.map((link) => (
     <Link
       key={link.label}
       href={link.link}
-      className="block leading-4 py-2 px-3 rounded-sm no-underline text-gray-700 dark:text-dark-0 text-sm font-medium hover:bg-primary-400 hover:text-white dark:hover:bg-dark-6"
+      className="dark:text-dark-0 dark:hover:bg-dark-6 block rounded-sm px-3 py-2 text-sm font-medium leading-4 text-gray-700 no-underline hover:bg-primary-400 hover:text-white"
     >
       {link.label}
     </Link>
   ));
 
   return (
-    <header className="h-14 shadow-sm mb-30 bg-white border-b border-gray-300 dark:border-dark-4 sticky top-0 z-20">
-      <Flex className="h-14 justify-between items-center px-3">
-        <Flex className="items-center cursor-pointer gap-2" onClick={() => {router.push("/")}}>
-          <Image src={logo.src} width={35} height={35} alt="Trust logo"/>
+    <header className="fixed z-50 w-full bg-white bg-opacity-50 px-8">
+      <Flex className="h-14 items-center justify-between px-3">
+        <Flex
+          className="cursor-pointer items-center gap-2"
+          onClick={() => {
+            router.push("/");
+          }}
+        >
+          <Image src={logo.src} width={35} height={35} alt="Trust logo" />
           <p className="font-bold">Trust Educational and Visa Consultancy</p>
         </Flex>
         <Group gap={10} visibleFrom="xs">
@@ -55,7 +60,7 @@ export function Header() {
         <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
       </Flex>
       <Collapse in={opened} className="relative z-10">
-        <Flex className="flex flex-col items-center justify-center bg-white gap-3 pt-4 border h-[30dvh]">
+        <Flex className="flex h-[30dvh] flex-col items-center justify-center gap-3 border bg-white pt-4">
           {items}
         </Flex>
       </Collapse>

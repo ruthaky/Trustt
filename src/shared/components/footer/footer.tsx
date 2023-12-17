@@ -49,7 +49,7 @@ export default function Footer() {
 
   return (
     <div>
-      <Box className="flex min-h-[40dvh] flex-col items-center bg-primary-500 pt-4">
+      <Box className="flex min-h-[40dvh] flex-col items-center bg-primary-700 pt-4">
         <Box>
           <Box className="flex flex-col items-center justify-center">
             <Flex className="items-center gap-2">
@@ -61,9 +61,24 @@ export default function Footer() {
             {/* <Text fz={"sm"} className="text-center" c={"white"}>
               Jorney of excellence
             </Text> */}
-            <Flex className="text-white"><span><IconPhone/></span>+251-911263642 | +251-946634613</Flex>
-            <Flex className="text-white mt-2" gap={2}><span><IconMail/></span>trusteducationalandvisconsult@gmail.com</Flex>
-            <Flex className="text-white mt-2 mb-8" gap={2}><span><IconAddressBook/></span>22 Noah Bldg, beside Golagol, Addis Ababa</Flex>
+            <Flex className="text-white">
+              <span>
+                <IconPhone />
+              </span>
+              +251-911263642 | +251-946634613
+            </Flex>
+            <Flex className="mt-2 text-white" gap={2}>
+              <span>
+                <IconMail />
+              </span>
+              trusteducationalandvisconsult@gmail.com
+            </Flex>
+            <Flex className="mb-8 mt-2 text-white" gap={2}>
+              <span>
+                <IconAddressBook />
+              </span>
+              22 Noah Bldg, beside Golagol, Addis Ababa
+            </Flex>
           </Box>
         </Box>
         <Box className="flex w-full flex-row justify-around p-6">

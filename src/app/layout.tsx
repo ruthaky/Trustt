@@ -5,11 +5,12 @@ import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { MantineProvider, type MantineThemeOverride } from "@mantine/core";
-import '@mantine/core/styles.css';
-import '@mantine/notifications/styles.css';
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
+import "@mantine/carousel/styles.css";
 import { Notifications } from "@mantine/notifications";
 
-import { theme as baseTheme} from "@/config/theme";
+import { theme as baseTheme } from "@/config/theme";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -33,8 +34,8 @@ export default function RootLayout({
       <body className={`font-sans ${inter.variable}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           <MantineProvider theme={theme} defaultColorScheme="light">
-          {children}
-          <Notifications/>
+            {children}
+            <Notifications />
           </MantineProvider>
         </TRPCReactProvider>
       </body>

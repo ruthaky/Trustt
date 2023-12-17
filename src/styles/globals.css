@@ -1,9 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-
 body {
-    max-width: 100dvw;
-    overflow-x: hidden;
-  }
+  max-width: 100dvw;
+  overflow-x: hidden;
+}

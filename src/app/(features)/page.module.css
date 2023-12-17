@@ -1,0 +1,49 @@
+.gradient-bg {
+  background: linear-gradient(
+    to right,
+    rgba(75, 59, 220, 0.834),
+    rgba(58, 210, 28, 0.805)
+  );
+}
+
+.gradient-bg1 {
+  background: linear-gradient(
+    to right,
+    rgba(199, 44, 44, 0.871),
+    rgba(204, 204, 61, 0.777)
+  );
+}
+.gradient-bg2 {
+  background: linear-gradient(
+    to right,
+    rgba(76, 40, 182, 0.9),
+    rgba(204, 61, 194, 0.822)
+  );
+}
+.gradient-bg3 {
+  background: linear-gradient(
+    to right,
+    rgba(151, 186, 13, 0.71),
+    rgba(182, 40, 161, 0.862)
+  );
+}
+
+.item {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
